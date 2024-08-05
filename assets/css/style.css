@@ -365,7 +365,8 @@ figure.pp {
 
 figure.pp .overlay,
 figure.pp .overlay-method,
-figure.pp .overlay-app {
+figure.pp .overlay-app,
+figure.pp .overlay-people {
   position: absolute;
   top: 0;
   left: 0;
@@ -471,12 +472,14 @@ body.method .content.method.hidden,
 body.home nav#primary,
 body.home nav#ping-practice,
 body.home img.overlay,
-body.method img.overlay,
 body.home img.overlay-app,
+body.home img.overlay-people,
+body.method img.overlay,
 body.about img.overlay-app,
 img.overlay,
 img.overlay-method,
-img.overlay-app {
+img.overlay-app,
+img.overlay-people {
   opacity: 0;
   transition: 0.5s ease opacity;
 }
@@ -488,6 +491,7 @@ body.method nav#ping-practice,
 body.about img.overlay,
 body.method img.overlay-method,
 body.app img.overlay-app,
+body.people img.overlay-people,
 body.about .content.about,
 body.method .content.method,
 body.app .content.app,
