@@ -520,3 +520,35 @@ a.email {
   opacity: 0.5;
   text-decoration: none;
 }
+
+p.transmission a {
+  font-family: "garamondno8italic";
+  /* background: #f0f0f0; */
+  border: 0;
+}
+
+.ping {
+  display: inline-block;
+  height: 1.25em;
+  width: 1.25em;
+  border-radius: 50%;
+  background: #f0f0f0;
+  margin-right: 0.5em;
+  vertical-align: -0.25em;
+}
+
+body.transmission h1 {
+  font-family: "garamondno8italic";
+  font-weight: normal;
+}
+
+body.transmission cite {
+  font-size: 0.75em;
+  font-family: "garamondno8regular";
+  font-style: normal;
+}
+
+a.author {
+  background: #f0f0f0;
+  /* text-decoration: none; */
+}
