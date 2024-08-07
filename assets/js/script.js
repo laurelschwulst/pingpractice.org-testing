@@ -56,12 +56,14 @@ $(function () {
     $("body").removeClass("app");
     $("body").removeClass("people");
     $("body").removeClass("transmissions");
+    $("body").removeClass("transmission-one");
     $("body").addClass("home");
     $(".content.about").addClass("hidden");
     $(".content.method").addClass("hidden");
     $(".content.app").addClass("hidden");
     $(".content.people").addClass("hidden");
     $(".content.transmissions").addClass("hidden");
+    $(".content.transmission-one").addClass("hidden");
     setTimeout(function () {
       // $(".content.method").addClass("goodbye");
       $("body.home .content.home").removeClass("goodbye");
@@ -73,6 +75,7 @@ $(function () {
       $(".content.app").addClass("goodbye");
       $(".content.people").addClass("goodbye");
       $(".content.transmissions").addClass("goodbye");
+      $(".content.transmission-one").addClass("hidden");
       $("a.enter").fadeIn();
     }, 1500);
   });
@@ -211,15 +214,22 @@ $(function () {
     $("body").removeClass("method");
     $("body").removeClass("app");
     $("body").removeClass("people");
+    $("body").removeClass("transmission-one");
     $(".content.about").addClass("hidden");
     $(".content.method").addClass("hidden");
     $(".content.app").addClass("hidden");
     $(".content.people").addClass("hidden");
+    $(".content.transmission-one").addClass("hidden");
     $("nav#primary a.about-link").removeClass("current");
     $("nav#primary a.method-link").removeClass("current");
     $("nav#primary a.app-link").removeClass("current");
     $("nav#primary a.people-link").removeClass("current");
     $("nav#primary a.transmissions-link").addClass("current");
+    // individual transmission --> transmissions
+    $("nav#transmissions").removeClass("show");
+    $(".content.transmission-one").addClass("hidden");
+    $(".content.transmission-two").addClass("hidden");
+    $(".content.transmission-three").addClass("hidden");
     setTimeout(function () {
       $(".content.about").addClass("hidden");
       $(".content.about").addClass("goodbye");
@@ -229,11 +239,128 @@ $(function () {
       $(".content.app").addClass("goodbye");
       $(".content.people").addClass("hidden");
       $(".content.people").addClass("goodbye");
+      $(".content.transmission-one").addClass("hidden");
+      $(".content.transmission-one").addClass("goodbye");
+      $(".content.transmission-two").addClass("hidden");
+      $(".content.transmission-two").addClass("goodbye");
+      $(".content.transmission-three").addClass("hidden");
+      $(".content.transmission-three").addClass("goodbye");
       $(".content.transmissions").removeClass("goodbye");
+      // individual transmission --> transmissions
+      $("nav#transmissions").addClass("hide");
+      $("nav#primary").show();
+      $("figure.pp").show();
     }, 500);
     setTimeout(function () {
       $("body").addClass("transmissions");
-      $(".content.transmissions").removeClass("hidden");
+      // individual transmission --> transmissions
+      $("figure.pp").removeClass("hidden");
+      $("nav#primary").removeClass("hide");
     }, 1500);
   });
+
+  // TRANSMISSIONS -> TRANSMISSION 1
+
+  $("a.transmission-one").click(function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    $("body").removeClass("transmissions");
+    $(".content.transmissions").addClass("hidden");
+    $("nav#primary").addClass("hide");
+    $("figure.pp").addClass("hidden");
+    setTimeout(function () {
+      $("nav#transmissions").removeClass("hide");
+      $(".content.transmissions").addClass("hidden");
+      $(".content.transmissions").addClass("goodbye");
+      $(".content.transmission-one").removeClass("goodbye");
+      $("figure.pp").hide();
+      $("nav#primary").hide();
+    }, 500);
+    setTimeout(function () {
+      $("body").addClass("transmission-one");
+      $(".content.transmission-one").removeClass("hidden");
+      $("nav#transmissions").addClass("show");
+    }, 1500);
+  });
+
+  // TRANSMISSIONS -> TRANSMISSION 2
+
+  $("a.transmission-two").click(function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    $("body").removeClass("transmissions");
+    $(".content.transmissions").addClass("hidden");
+    $("nav#primary").addClass("hide");
+    $("figure.pp").addClass("hidden");
+    setTimeout(function () {
+      $("nav#transmissions").removeClass("hide");
+      $(".content.transmissions").addClass("hidden");
+      $(".content.transmissions").addClass("goodbye");
+      $(".content.transmission-two").removeClass("goodbye");
+      $("figure.pp").hide();
+      $("nav#primary").hide();
+    }, 500);
+    setTimeout(function () {
+      $("body").addClass("transmission-two");
+      $(".content.transmission-two").removeClass("hidden");
+      $("nav#transmissions").addClass("show");
+    }, 1500);
+  });
+
+  // TRANSMISSIONS -> TRANSMISSION 3
+
+  $("a.transmission-three").click(function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    $("body").removeClass("transmissions");
+    $(".content.transmissions").addClass("hidden");
+    $("nav#primary").addClass("hide");
+    $("figure.pp").addClass("hidden");
+    setTimeout(function () {
+      $("nav#transmissions").removeClass("hide");
+      $(".content.transmissions").addClass("hidden");
+      $(".content.transmissions").addClass("goodbye");
+      $(".content.transmission-three").removeClass("goodbye");
+      $("figure.pp").hide();
+      $("nav#primary").hide();
+    }, 500);
+    setTimeout(function () {
+      $("body").addClass("transmission-three");
+      $(".content.transmission-three").removeClass("hidden");
+      $("nav#transmissions").addClass("show");
+    }, 1500);
+  });
+
+  // ping slideshow
+
+  $(".next").click(function () {
+    showNextPing();
+    console.log("next ping!!!");
+  });
+
+  $(".prev").click(function () {
+    showPrevPing();
+    console.log("prev ping!!!");
+  });
+
+  const pings = document.querySelectorAll(".ping-slideshow div.ping");
+  let currentIndex = 0;
+
+  function showPing(index) {
+    pings.forEach((ping, i) => {
+      ping.classList.toggle("active", i === index);
+    });
+  }
+
+  function showNextPing() {
+    currentIndex = (currentIndex + 1) % pings.length;
+    showPing(currentIndex);
+  }
+
+  function showPrevPing() {
+    currentIndex = (currentIndex - 1 + pings.length) % pings.length;
+    showPing(currentIndex);
+  }
+
+  showPing(currentIndex);
 });

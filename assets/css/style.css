@@ -150,14 +150,38 @@ nav#bottom a {
   font-family: "garamondno8italic";
 }
 
+nav#transmissions {
+  opacity: 0;
+  transition: 0.5s ease opacity;
+  display: block;
+}
+
+nav#transmissions.hide {
+  display: none;
+}
+
 nav#primary a,
-nav#lateral a {
+nav#lateral a,
+nav#transmissions a {
   color: black;
   font-style: normal;
   font-family: "garamondno8italic";
   display: inline-block;
   margin-right: 0.5em;
   text-decoration: none;
+}
+
+nav#transmissions a {
+  border-bottom: 1px solid black;
+}
+
+nav#primary.hide {
+  opacity: 0;
+  transition: 0.5s ease opacity;
+}
+
+nav#transmissions.show {
+  opacity: 1;
 }
 
 nav#primary a.current {
@@ -361,6 +385,8 @@ body.inside .everything {
 
 figure.pp {
   position: relative;
+  transition: 0.5s ease opacity;
+  opacity: 1;
 }
 
 figure.pp .overlay,
@@ -372,6 +398,10 @@ figure.pp .overlay-people {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+figure.pp.hidden {
+  opacity: 0;
 }
 
 @media screen and (max-width: 725px) {
@@ -447,7 +477,10 @@ body.fadeee.out .everything .hide {
 body.method .content.method.hidden,
 .content.app.hidden,
 .content.people.hidden,
-.content.transmissions.hidden {
+.content.transmissions.hidden,
+.content.transmission-one.hidden,
+.content.transmission-two.hidden,
+.content.transmission-three.hidden {
   opacity: 0;
   transition: 0.5s ease opacity;
 }
@@ -456,7 +489,10 @@ body.method .content.method.hidden,
 .content.about,
 .content.app,
 .content.people,
-.content.transmissions {
+.content.transmissions,
+.content.transmission-one,
+.content.transmission-two,
+.content.transmission-three {
   opacity: 1;
   transition: 0.5s ease opacity;
 }
@@ -527,7 +563,7 @@ p.transmission a {
   border: 0;
 }
 
-.ping {
+span.ping {
   display: inline-block;
   height: 1.25em;
   width: 1.25em;
@@ -537,12 +573,21 @@ p.transmission a {
   vertical-align: -0.25em;
 }
 
-body.transmission h1 {
-  font-family: "garamondno8italic";
-  font-weight: normal;
+h1 span.ping {
+  margin-right: 0.1em;
 }
 
-body.transmission cite {
+h1.transmission {
+  font-family: "garamondno8italic";
+  font-weight: normal;
+  /* margin-top: 1.35em; */
+  margin-top: 3.25em;
+  margin-bottom: 1.25em;
+  font-size: 1em;
+  /* border-bottom: 1px solid #f0f0f0; */
+}
+
+cite {
   font-size: 0.75em;
   font-family: "garamondno8regular";
   font-style: normal;
@@ -551,4 +596,84 @@ body.transmission cite {
 a.author {
   background: #f0f0f0;
   /* text-decoration: none; */
+}
+
+.ping-slideshow div.ping {
+  display: none;
+}
+
+.ping-slideshow div.ping.active {
+  display: flex;
+}
+
+div.ping {
+  display: flex;
+  align-items: center;
+  /* text-align: center; */
+  /* justify-content: center; */
+  border-width: 10px;
+  border-style: solid;
+  /* border-color: #f0f0f0; */
+  border-color: #f0f0f0;
+  /* border-color: rgba(0, 0, 0, 0.15); */
+  background: #f0f0f0;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 25px;
+  height: 80vw;
+  width: 80vw;
+  max-width: 459px;
+  max-height: 459px;
+  margin: 1.75em 0;
+  position: relative;
+}
+
+div.ping.centered {
+  justify-content: center;
+}
+
+.ping-metadata {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  left: 0.5em;
+  text-align: center;
+  /* opacity: 0.25; */
+  font-size: 0.75em;
+  font-family: "Courier New", monospace;
+}
+
+div.ping.extra-large .ping-content {
+  font-size: 3.25em;
+  line-height: 1.15;
+  font-family: "garamondno8italic";
+}
+
+div.ping.large .ping-content {
+  font-size: 1.75em;
+  font-family: "garamondno8italic";
+}
+
+div.ping.medium .ping-content {
+  font-size: 1.25em;
+  font-family: "garamondno8italic";
+}
+
+div.ping.small .ping-content {
+  font-size: 0.75em;
+}
+
+.ping-controls {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ping-controls div {
+  cursor: pointer;
+  padding: 1em 2em;
+  display: inline-block;
+}
+
+.ping-slideshow div.ping {
+  margin-bottom: 0;
 }
