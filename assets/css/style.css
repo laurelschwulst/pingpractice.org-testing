@@ -302,6 +302,10 @@ footer {
   margin-bottom: 5em;
 }
 
+figcaption {
+  font-size: 0.75em;
+}
+
 hr {
   border: 0;
   margin: 2em 0;
@@ -480,7 +484,8 @@ body.method .content.method.hidden,
 .content.transmissions.hidden,
 .content.transmission-one.hidden,
 .content.transmission-two.hidden,
-.content.transmission-three.hidden {
+.content.transmission-three.hidden,
+.content.receptions.hidden {
   opacity: 0;
   transition: 0.5s ease opacity;
 }
@@ -492,7 +497,8 @@ body.method .content.method.hidden,
 .content.transmissions,
 .content.transmission-one,
 .content.transmission-two,
-.content.transmission-three {
+.content.transmission-three,
+.content.receptions {
   opacity: 1;
   transition: 0.5s ease opacity;
 }
@@ -532,7 +538,8 @@ body.about .content.about,
 body.method .content.method,
 body.app .content.app,
 body.people .content.people,
-body.transmissions .content.transmissions {
+body.transmissions .content.transmissions,
+body.receptions .content.receptions {
   opacity: 1;
   transition: 0.5s ease opacity;
 }
@@ -561,6 +568,12 @@ p.transmission a {
   font-family: "garamondno8italic";
   /* background: #f0f0f0; */
   border: 0;
+  color: black;
+  transition: all 0.5s ease;
+}
+
+p.transmission a:hover {
+  /* color: #1849cc; */
 }
 
 span.ping {
@@ -571,6 +584,11 @@ span.ping {
   background: #f0f0f0;
   margin-right: 0.5em;
   vertical-align: -0.25em;
+  transition: all 0.5s ease;
+}
+
+p.transmission:hover span.ping {
+  /* background: #1849cc; */
 }
 
 h1 span.ping {
@@ -584,7 +602,27 @@ h1.transmission {
   margin-top: 3.25em;
   margin-bottom: 1.25em;
   font-size: 1em;
+  /* color: #1849cc; */
   /* border-bottom: 1px solid #f0f0f0; */
+}
+
+h1.transmission span.ping {
+  /* background: #1849cc; */
+}
+
+cite.stamp {
+  display: inline-block;
+  color: #1849cc;
+  border: 1px dashed #1849cc;
+  padding: 1em 1.25em;
+  line-height: 1.5;
+  margin: 3.5em 0 2em;
+  margin-left: -0.75em;
+}
+
+cite.stamp a.author {
+  background: transparent;
+  color: #1849cc;
 }
 
 cite {
@@ -604,6 +642,10 @@ a.author {
 
 .ping-slideshow div.ping.active {
   display: flex;
+}
+
+figure.photo {
+  margin: 1.75em 0;
 }
 
 div.ping {
@@ -628,19 +670,55 @@ div.ping {
   position: relative;
 }
 
+.ping-metadata.hidden {
+  display: none;
+}
+
+div.ping.hidden-metadata .ping-metadata {
+  opacity: 0;
+  transition: 0.5s ease opacity;
+}
+
+div.ping.hidden-metadata:hover .ping-metadata {
+  opacity: 1;
+}
+
 div.ping.centered {
   justify-content: center;
 }
 
 .ping-metadata {
   position: absolute;
-  bottom: 0.5em;
-  right: 0.5em;
-  left: 0.5em;
+  right: 1.25em;
+  left: 1.25em;
   text-align: center;
   /* opacity: 0.25; */
+  letter-spacing: 0.025em;
   font-size: 0.75em;
   font-family: "Courier New", monospace;
+}
+
+.small {
+  letter-spacing: 0.025em;
+  font-size: 0.75em;
+  font-family: "garamondno8italic";
+}
+
+.small.non-italic {
+  font-family: "garamondno8regular";
+  letter-spacing: 0.01em;
+}
+
+.ping-metadata.variation {
+  font-family: "garamondno8italic";
+  text-align: left;
+  top: 1em;
+}
+
+.ping-metadata.id {
+  font-family: "garamondno8italic";
+  text-align: left;
+  bottom: 1em;
 }
 
 div.ping.extra-large .ping-content {
@@ -676,4 +754,52 @@ div.ping.small .ping-content {
 
 .ping-slideshow div.ping {
   margin-bottom: 0;
+}
+
+.ping-roll {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.25em;
+  width: 100%;
+}
+
+.ping-roll .ping-metadata {
+  display: none;
+}
+
+.ping-roll div.ping {
+  width: 100%;
+  height: auto;
+  font-size: 0.31em;
+  border: 0;
+  aspect-ratio: 1/ 1;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.ping-roll.special div.ping {
+  align-items: flex-start;
+  font-size: 0.25em;
+}
+
+.ping-roll.special div.ping .ping-content {
+  line-height: 1.25;
+}
+
+.ping-list div.ping {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  display: block;
+}
+
+.ping-list .ping-content {
+  margin-bottom: 1em;
+  font-size: 1.25em;
+  font-family: "garamondno8italic";
+}
+
+.ping-list .ping-metadata {
+  position: static;
 }
